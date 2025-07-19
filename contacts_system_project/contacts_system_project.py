@@ -32,7 +32,10 @@ while True:
             continue
 
     if choice == 1: # 顯示
-        show_all(contacts)
+        if not contacts:
+            print('無聯絡人 請先新增聯絡人')
+        else:
+            show_all(contacts)
 
     elif choice == 2: # 新增
         new_name = input('請輸入聯絡人姓名 : ')
@@ -82,7 +85,7 @@ while True:
             if search == 1:
                 searching = input('請輸入姓名 : ')
                 for data in contacts:
-                    if searching == data['name']:
+                    if searching in data['name']:
                         print(f'你搜尋的聯絡人資料 {data['name']}  {data['phone']}  {data['mail']}')
                         found = True
                 if not found:
@@ -90,13 +93,13 @@ while True:
             elif search == 2:
                 searching = input('請輸入電話 : ')
                 for data in contacts:
-                    if searching == data['phone']:
+                    if searching in data['phone']:
                         print(f'你搜尋的聯絡人資料 {data['name']}  {data['phone']}  {data['mail']}')
                         found = True
                 if not found:
                     print('未搜尋到該聯絡人')
             elif search == 3:
-                searching = input('請輸入信箱 : ')
+                searching in input('請輸入信箱 : ')
                 for data in contacts:
                     if searching == data['mail']:
                         print(f'你搜尋的聯絡人資料 {data['name']}  {data['phone']}  {data['mail']}')
